@@ -1,4 +1,9 @@
-
-<p *ngIf="startCounter">Comienzo a contar {{this.counter.times}}</p>
-
-<button (click)="startToCount" value="Click to start counter"></button>
+<button (click)="startToCount()">{{btnMsg}}</button>
+<br/>
+<div>
+    <div  *ngIf="startCounter">
+        <p>Counter was clicked </p>
+        <app-counter></app-counter>
+        <p>times!</p>
+    </div>
+</div>
