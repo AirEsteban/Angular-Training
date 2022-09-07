@@ -1,4 +1,4 @@
-import { Component, Injectable, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -12,7 +12,12 @@ import { Component, Injectable, OnInit } from '@angular/core';
 export class CounterComponent implements OnInit {
 
   times : number = 0;
+  @Output() timesEmitter= new EventEmitter<any>();
+  @Output() newItemEvent = new EventEmitter<string>();
 
+  addNewItem(value: string) {
+    this.newItemEvent.emit(value);
+  }
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +25,7 @@ export class CounterComponent implements OnInit {
 
   CountOneTime() : void {
     this.times++;
+    this.timesEmitter.emit(this.times);
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, Injectable ,OnInit } from '@angular/core';
+import { Component ,OnInit } from '@angular/core';
 import { CounterComponent } from '../counter/counter.component'
 
 @Component({
@@ -14,14 +14,18 @@ export class ProductsListComponent implements OnInit {
   constructor( private counter : CounterComponent){
 
   }
-  btnMsg : String = "Click to start counting";
+  btnMsg : String = "Click to start adding buttons";
   startCounter : Boolean = false;
+  items = ['item1', 'item2', 'item3', 'item4'];
 
+  addItem(newItem: string) {
+    this.items.push(newItem);
+  }
+  
   startToCount() : void{
     if(!this.startCounter){
       this.startCounter = true;
       this.btnMsg = "Count another";
     }
-    this.counter.CountOneTime();
   }
 }

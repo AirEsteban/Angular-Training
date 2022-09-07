@@ -1,9 +1,10 @@
-<button (click)="startToCount()">{{btnMsg}}</button>
+<button *ngIf="!startCounter" (click)="startToCount()">{{btnMsg}}</button>
 <br/>
 <div>
-    <div  *ngIf="startCounter">
-        <p>Counter was clicked </p>
-        <app-counter></app-counter>
-        <p>times!</p>
+    <div *ngIf="startCounter">
+        <app-counter (newItemEvent)="addItem($event)"></app-counter>
+        <ul>
+            <li *ngFor="let item of items">{{item}}</li>
+        </ul>
     </div>
 </div>
