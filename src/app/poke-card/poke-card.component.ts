@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PokeApiService } from '../poke-api.service';
 
 @Component({
   selector: 'poke-card',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokeCardComponent implements OnInit {
 
-  constructor() { }
+  name : String = '';
+  imgSrc : String = '';
+  shortDesc : String = '';
+  moreInfo : String = 'See More...';
+
+  constructor(private poke : PokeApiService) { }
 
   ngOnInit(): void {
+    this.obtenerCharizard();
+  }
+
+  obtenerCharizard(){
+    this.poke.getPokemonByName("charizard");
   }
 
 }
